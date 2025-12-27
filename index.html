@@ -1,0 +1,605 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>Untuk Marsya 💗</title>
+  <style>
+    :root{
+      --card:#ffffffdb;
+      --text:#222;
+      --muted:#3b3b3bc7;
+      --yes:#ff4d6d;
+      --yes2:#ff758f;
+      --line: rgba(0,0,0,.08);
+      --shadow: 0 20px 60px rgba(0,0,0,.18);
+    }
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+
+    body{
+      margin:0;
+      font-family: ui-rounded, system-ui, -apple-system, "Segoe UI", Roboto, Arial, "Noto Sans";
+      color:var(--text);
+
+      background-image: url("https://i.pinimg.com/1200x/d9/6b/2a/d96b2aaa56fd576e63a14a5716f9be91.jpg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-color: #ffd1dc;
+
+      overflow:hidden;
+      position: relative;
+    }
+
+    body::before{
+      content:"";
+      position: fixed;
+      inset: 0;
+      background: rgba(255, 255, 255, 0.45);
+      backdrop-filter: blur(1.5px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .hearts{
+      position:fixed; inset:0;
+      pointer-events:none;
+      opacity:.55;
+      z-index: 1;
+    }
+    .hearts span{
+      position:absolute;
+      animation: float 7s linear infinite;
+      opacity:.78;
+      filter: blur(.2px);
+    }
+    @keyframes float{
+      from{ transform: translateY(110vh) rotate(0deg); }
+      to  { transform: translateY(-20vh) rotate(360deg); }
+    }
+
+    .app{
+      min-height:100%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding: 18px 14px calc(18px + env(safe-area-inset-bottom));
+      position: relative;
+      z-index: 2;
+    }
+
+    .card{
+      width:min(720px, 94vw);
+      background:var(--card);
+      backdrop-filter: blur(10px);
+      border:1px solid rgba(255,255,255,.35);
+      border-radius:26px;
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+
+    .topbar{
+      padding:16px 18px 12px;
+      border-bottom:1px solid var(--line);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+    }
+
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 12px;
+      border-radius:999px;
+      background:rgba(255,255,255,.65);
+      border:1px solid rgba(255,255,255,.55);
+      font-size:13px;
+      max-width: 100%;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .dots{ display:flex; gap:6px; flex:0 0 auto; }
+    .dot{
+      width:9px; height:9px; border-radius:999px;
+      background: rgba(0,0,0,.14);
+      border: 1px solid rgba(255,255,255,.45);
+    }
+    .dot.active{
+      background: rgba(255,77,109,.9);
+      box-shadow: 0 0 0 3px rgba(255,77,109,.16);
+    }
+
+    .content{ padding:18px 18px 14px; }
+
+    h1{
+      margin: 6px 0 10px;
+      font-size: clamp(22px, 3.6vw, 36px);
+      line-height:1.15;
+      letter-spacing: -0.2px;
+    }
+    p{
+      margin: 0 0 10px;
+      font-size: clamp(15px, 2.2vw, 18px);
+      line-height:1.6;
+      color: var(--muted);
+    }
+    .quote{
+      margin-top: 8px;
+      font-style: italic;
+      color: rgba(0,0,0,.62);
+    }
+
+    .nav{
+      display:flex;
+      gap:10px;
+      justify-content:space-between;
+      padding: 14px 18px 18px;
+      border-top:1px solid var(--line);
+      background: rgba(255,255,255,.35);
+    }
+
+    .btn{
+      border:none;
+      border-radius:999px;
+      padding: 13px 18px;
+      font-size: 16px;
+      font-weight: 800;
+      cursor:pointer;
+      user-select:none;
+      -webkit-tap-highlight-color: transparent;
+      min-height: 48px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      transition: transform .12s ease, filter .12s ease;
+      width: 100%;
+    }
+    .btn:active{ transform: translateY(1px) scale(.995); }
+    .btn:focus{ outline: 3px solid rgba(255,77,109,.28); outline-offset: 3px; }
+
+    .btnRow{
+      width:100%;
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:10px;
+    }
+
+    .btnGhost{
+      background: rgba(255,255,255,.7);
+      border: 1px solid rgba(0,0,0,.08);
+      color: rgba(0,0,0,.78);
+      box-shadow: 0 10px 22px rgba(0,0,0,.07);
+    }
+    .btnPrimary{
+      background: linear-gradient(135deg, var(--yes), var(--yes2));
+      color:#fff;
+      box-shadow: 0 12px 26px rgba(255,77,109,.28);
+    }
+
+    .page{ display:none; }
+    .page.active{ display:block; }
+
+    .proposalArea{
+      margin-top: 14px;
+      position: relative;
+      width: 100%;
+      height: 190px;
+      border-radius: 18px;
+      border: 1px dashed rgba(0,0,0,.10);
+      background: rgba(255,255,255,.4);
+      overflow:hidden;
+    }
+    .proposalArea .btn{
+      width: auto;
+      min-width: 140px;
+      padding: 13px 18px;
+    }
+
+    #yesBtn{
+      position:absolute;
+      left: 50%;
+      top: 58%;
+      transform: translate(-50%, -50%);
+    }
+
+    #noBtn{
+      position:absolute;
+      left: 72%;
+      top: 58%;
+      transform: translate(-50%, -50%);
+      background: rgba(108,117,125,.14);
+      border: 2px solid rgba(108,117,125,.32);
+      color: #3a3f45;
+      box-shadow:none;
+    }
+
+    .hint{
+      margin-top: 10px;
+      font-size: 12.5px;
+      color: rgba(0,0,0,.55);
+    }
+    code{
+      background: rgba(255,255,255,.7);
+      padding: 2px 6px;
+      border-radius: 8px;
+      border: 1px solid rgba(0,0,0,.06);
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 12px;
+    }
+
+    .acceptedActions{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top: 12px;
+    }
+    .pill{
+      border:1px solid rgba(0,0,0,.08);
+      background: rgba(255,255,255,.72);
+      border-radius:999px;
+      padding: 10px 14px;
+      font-weight: 800;
+      cursor: pointer;
+      text-decoration:none;
+      color: inherit;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      min-height: 44px;
+    }
+
+    .toast{
+      margin-top:10px;
+      font-size: 13px;
+      color: rgba(0,0,0,.62);
+      display:none;
+    }
+
+    .confetti{
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      overflow:hidden;
+      z-index: 3;
+    }
+    .confetti span{
+      position:absolute;
+      font-size:20px;
+      animation: pop 1.9s ease-out forwards;
+      opacity:0;
+    }
+    @keyframes pop{
+      0%{ transform: translateY(20px) scale(.6); opacity:0; }
+      12%{ opacity:1; }
+      100%{ transform: translateY(-220px) rotate(18deg) scale(1.2); opacity:0; }
+    }
+
+    @media (max-width: 420px){
+      .content{ padding: 16px 14px 12px; }
+      .nav{ padding: 12px 14px 14px; }
+      .proposalArea{ height: 210px; }
+      .proposalArea .btn{ min-width: 132px; }
+      .btnRow{ grid-template-columns: 1fr; }
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      .hearts span, .confetti span{ animation:none; }
+      .btn{ transition:none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="hearts" id="bgHearts" aria-hidden="true"></div>
+
+  <div class="app">
+    <div class="card" role="main">
+      <div class="topbar">
+        <div class="badge">💌 Ini buat <strong id="namaTop">Marsya</strong> doang</div>
+        <div class="dots" aria-label="progress">
+          <span class="dot" id="dot1"></span>
+          <span class="dot" id="dot2"></span>
+          <span class="dot" id="dot3"></span>
+          <span class="dot" id="dot4"></span>
+          <span class="dot" id="dot5"></span>
+        </div>
+      </div>
+
+      <div class="content">
+        <!-- PAGE 1 -->
+        <section class="page active" id="page1">
+          <h1>Hai <span id="nama1">Marsya</span>… 💗</h1>
+          <p>
+            Aku nggak jago ngomong manis, tapi aku pengin kamu tahu satu hal:
+            akhir-akhir ini aku kepikiran kamu terus.
+          </p>
+          <p>
+            Entah kenapa, hal-hal kecil yang kamu lakuin itu bikin aku senyum sendiri.
+          </p>
+          <p class="quote">“Kayak… kamu tuh nyaman aja gitu.”</p>
+          <p class="hint">Kalau mau, nama masih bisa diganti via URL <code>?nama=Marsya&dari=Namamu</code></p>
+        </section>
+
+        <!-- PAGE 2 -->
+        <section class="page" id="page2">
+          <h1>Serius deh… 🌷</h1>
+          <p>
+            Aku suka cara kamu jadi diri sendiri. Cara kamu ketawa, cara kamu cerita,
+            sampai cara kamu “iya-in” hal kecil—itu lucu banget.
+          </p>
+          <p>
+            Dan makin ke sini, aku makin sadar… aku pengin ada di sisi kamu lebih sering.
+          </p>
+          <p class="quote">“Bukan karena apa-apa, tapi karena aku suka kamu.”</p>
+        </section>
+
+        <!-- PAGE 3 -->
+        <section class="page" id="page3">
+          <h1>Aku mau jujur ya…</h1>
+          <p>
+            Aku nggak pengin cuma jadi orang yang lewat di hidup kamu.
+            Aku pengin jadi tempat kamu cerita, tempat kamu pulang, dan tempat kamu nyaman.
+          </p>
+          <p>
+            Kita jalanin pelan-pelan aja. Nggak perlu sempurna—yang penting sama-sama.
+          </p>
+          <p class="quote">“Kalau kamu bersedia, aku mau serius.”</p>
+        </section>
+
+        <!-- PAGE 4 -->
+        <section class="page" id="page4">
+          <h1><span id="nama4">Marsya</span>… boleh aku nanya? 🥺</h1>
+          <p>
+            Aku suka kamu. Bukan sekadar suka—tapi yang bikin aku pengin usaha dan menjaga.
+          </p>
+          <p>
+            Jadi… kamu mau nggak jadi pacar aku? 💞
+          </p>
+
+          <div class="proposalArea" id="wrap">
+            <button class="btn btnPrimary" id="yesBtn">Mau 💞</button>
+            <button class="btn" id="noBtn" aria-label="Tolak (tombol ini kabur)">Tolak 🙈</button>
+          </div>
+
+          <p class="hint">Kalau tombol “Tolak” susah diklik… ya itu pertanda 😄</p>
+        </section>
+
+        <!-- PAGE 5 -->
+        <section class="page" id="page5" aria-live="polite">
+          <h1>YESSS! 😭💖</h1>
+          <p>
+            Makasih ya <strong id="nama5">Marsya</strong>… aku beneran seneng banget.
+            Mulai sekarang, aku mau bikin kamu ngerasa dicintai dan dihargai (setiap hari).
+          </p>
+          <p class="quote">— <strong id="dari5">Aku</strong></p>
+
+          <div class="acceptedActions">
+            <button class="pill" id="copyBtn">✨ Salin pesan</button>
+            <a class="pill" id="waBtn" href="#" target="_blank" rel="noopener">💬 Kirim WhatsApp</a>
+            <button class="pill" id="restartBtn">🔁 Ulangi</button>
+          </div>
+          <div class="toast" id="toast">Tersalin! ✨</div>
+        </section>
+      </div>
+
+      <div class="nav">
+        <div class="btnRow">
+          <button class="btn btnGhost" id="backBtn">⬅️ Back</button>
+          <button class="btn btnPrimary" id="nextBtn">Next ➡️</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="confetti" id="confetti" aria-hidden="true"></div>
+
+  <script>
+    (() => {
+      // DEFAULT NAMA: Marsya (bisa di-override via ?nama=...)
+      const params = new URLSearchParams(location.search);
+      const nama = (params.get('nama') || 'Marsya').trim() || 'Marsya';
+      const dari = (params.get('dari') || 'Aku').trim() || 'Aku';
+
+      document.getElementById('namaTop').textContent = nama;
+      document.getElementById('nama1').textContent = nama;
+      document.getElementById('nama4').textContent = nama;
+      document.getElementById('nama5').textContent = nama;
+      document.getElementById('dari5').textContent = dari;
+
+      // Hearts
+      const bg = document.getElementById('bgHearts');
+      for (let i = 0; i < 18; i++) {
+        const s = document.createElement('span');
+        s.textContent = ['💗','💖','💘','💕'][Math.floor(Math.random()*4)];
+        s.style.left = Math.random()*100 + 'vw';
+        s.style.animationDelay = (Math.random()*7) + 's';
+        s.style.animationDuration = (5 + Math.random()*6) + 's';
+        s.style.fontSize = (16 + Math.random()*18) + 'px';
+        bg.appendChild(s);
+      }
+
+      // Pages
+      const pages = [1,2,3,4,5].map(n => document.getElementById(`page${n}`));
+      const dots  = [1,2,3,4,5].map(n => document.getElementById(`dot${n}`));
+      const backBtn = document.getElementById('backBtn');
+      const nextBtn = document.getElementById('nextBtn');
+      let current = 1;
+
+      function renderNav(){
+        pages.forEach((p, idx) => p.classList.toggle('active', idx === current-1));
+        dots.forEach((d, idx) => d.classList.toggle('active', idx === current-1));
+
+        backBtn.disabled = (current === 1);
+        backBtn.style.opacity = backBtn.disabled ? 0.55 : 1;
+
+        if (current === 4){
+          nextBtn.style.display = 'none';
+        } else if (current === 5){
+          document.querySelector('.nav').style.display = 'none';
+        } else {
+          nextBtn.style.display = '';
+          document.querySelector('.nav').style.display = '';
+        }
+      }
+
+      function goTo(n){
+        current = Math.max(1, Math.min(5, n));
+        renderNav();
+        if (current === 4) requestAnimationFrame(moveNoButton);
+      }
+
+      backBtn.addEventListener('click', () => goTo(current - 1));
+      nextBtn.addEventListener('click', () => goTo(current + 1));
+
+      // Swipe
+      let startX = 0, startY = 0;
+      document.addEventListener('touchstart', (e) => {
+        const t = e.touches[0];
+        startX = t.clientX; startY = t.clientY;
+      }, { passive:true });
+
+      document.addEventListener('touchend', (e) => {
+        if (!e.changedTouches || !e.changedTouches[0]) return;
+        const t = e.changedTouches[0];
+        const dx = t.clientX - startX;
+        const dy = t.clientY - startY;
+        if (current >= 4) return;
+
+        if (Math.abs(dx) > 70 && Math.abs(dx) > Math.abs(dy) * 1.2) {
+          if (dx < 0) goTo(current + 1);
+          if (dx > 0) goTo(current - 1);
+        }
+      }, { passive:true });
+
+      renderNav();
+
+      // Proposal (No kabur)
+      const wrap  = document.getElementById('wrap');
+      const yesBtn = document.getElementById('yesBtn');
+      const noBtn  = document.getElementById('noBtn');
+
+      function rectToWrapCoords(rect, wrapRect){
+        return { x: rect.left - wrapRect.left, y: rect.top - wrapRect.top, w: rect.width, h: rect.height };
+      }
+      function overlaps(a, b, pad=10){
+        return !(
+          a.x + a.w + pad < b.x ||
+          a.x > b.x + b.w + pad ||
+          a.y + a.h + pad < b.y ||
+          a.y > b.y + b.h + pad
+        );
+      }
+
+      function moveNoButton(){
+        if (current !== 4) return;
+
+        const wrapRect = wrap.getBoundingClientRect();
+        const noRect   = noBtn.getBoundingClientRect();
+        const yesRect  = yesBtn.getBoundingClientRect();
+
+        const padding = 10;
+        const maxX = Math.max(padding, wrapRect.width  - noRect.width  - padding);
+        const maxY = Math.max(padding, wrapRect.height - noRect.height - padding);
+
+        const yesInWrap = rectToWrapCoords(yesRect, wrapRect);
+
+        let candidate = null;
+        for (let t = 0; t < 26; t++) {
+          const x = padding + Math.random() * (maxX - padding);
+          const y = padding + Math.random() * (maxY - padding);
+          const c = { x, y, w: noRect.width, h: noRect.height };
+          if (!overlaps(c, yesInWrap, 14)) { candidate = c; break; }
+        }
+        if (!candidate) {
+          candidate = {
+            x: padding + Math.random() * (maxX - padding),
+            y: padding + Math.random() * (maxY - padding),
+            w: noRect.width, h: noRect.height
+          };
+        }
+
+        noBtn.style.left = (candidate.x + candidate.w/2) + 'px';
+        noBtn.style.top  = (candidate.y + candidate.h/2) + 'px';
+      }
+
+      function evade(e){
+        if (e){
+          try { e.preventDefault(); } catch(_){}
+          try { e.stopPropagation(); } catch(_){}
+        }
+        moveNoButton();
+        noBtn.style.pointerEvents = 'none';
+        setTimeout(() => { noBtn.style.pointerEvents = ''; }, 260);
+      }
+
+      ['mouseenter','pointerenter','pointerdown','mousedown','touchstart','focus']
+        .forEach(ev => noBtn.addEventListener(ev, evade, { passive:false }));
+      noBtn.addEventListener('click', evade, { passive:false });
+
+      wrap.addEventListener('pointermove', (e) => {
+        if (current !== 4) return;
+        const r = noBtn.getBoundingClientRect();
+        const cx = r.left + r.width/2;
+        const cy = r.top + r.height/2;
+        const dist = Math.hypot(e.clientX - cx, e.clientY - cy);
+        if (dist < 95) moveNoButton();
+      });
+
+      window.addEventListener('resize', () => moveNoButton());
+
+      // Accept flow -> halaman 5 + confetti
+      const confetti = document.getElementById('confetti');
+      function burst(){
+        for (let i = 0; i < 46; i++){
+          const s = document.createElement('span');
+          s.textContent = ['💖','💘','💞','💕','🌸','✨'][Math.floor(Math.random()*6)];
+          s.style.left = (Math.random()*100) + 'vw';
+          s.style.top  = (68 + Math.random()*28) + 'vh';
+          s.style.animationDelay = (Math.random()*0.18) + 's';
+          confetti.appendChild(s);
+          setTimeout(() => s.remove(), 2200);
+        }
+      }
+
+      yesBtn.addEventListener('click', () => {
+        goTo(5);
+        burst();
+      });
+
+      // WhatsApp target + pesan (sesuai request)
+      const copyBtn = document.getElementById('copyBtn');
+      const waBtn = document.getElementById('waBtn');
+      const toast = document.getElementById('toast');
+      const restartBtn = document.getElementById('restartBtn');
+
+      // 085890599794 -> 6285890599794
+      const waNumber = "6285890599794";
+      const msg = "iya aku juga suka sama kamu, aku mau jadi pacar kamu 😊❤️";
+
+      waBtn.href = "https://wa.me/" + waNumber + "?text=" + encodeURIComponent(msg);
+
+      copyBtn.addEventListener('click', async () => {
+        try{
+          await navigator.clipboard.writeText(msg);
+          toast.style.display = 'block';
+          setTimeout(()=> toast.style.display='none', 1600);
+        }catch(err){
+          alert('Gagal menyalin. Kamu bisa salin manual ya:\n\n' + msg);
+        }
+      });
+
+      restartBtn.addEventListener('click', () => {
+        document.querySelector('.nav').style.display = '';
+        goTo(1);
+      });
+
+      requestAnimationFrame(moveNoButton);
+    })();
+  </script>
+</body>
+</html>
