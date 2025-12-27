@@ -397,7 +397,7 @@
             Entah kenapa, hal-hal kecil yang kamu lakuin itu bikin aku senyum sendiri.
           </p>
           <p class="quote">“Kayak… kamu tuh nyaman aja gitu.”</p>
-          <p class="hint">Kalau mau, nama masih bisa diganti via URL <code>?nama=Marsya&dari=Namamu</code></p>
+  
         </section>
 
         <section class="page" id="page2">
@@ -438,7 +438,7 @@
             <button class="btn" id="noBtn" aria-label="Tolak (tombol ini kabur)">Tolak 🙈</button>
           </div>
 
-          <p class="hint">Kalau tombol “Tolak” susah diklik… ya itu pertanda 😄</p>
+          <p class="hint">Kalau tombol “Tolak” susah diklik… ya itu pertanda kita emang jodoh 😄</p>
         </section>
 
         <section class="page" id="page5" aria-live="polite">
@@ -472,7 +472,7 @@
   <div class="audioGate" id="audioGate" aria-hidden="true">
     <div class="audioGateCard">
       <h3>Musiknya belum jalan 🎵</h3>
-      <p>Di beberapa HP, musik perlu 1x tap dulu. Tap tombol ini ya.</p>
+      <p>Tap tombol ini ya, biar tambah romantis, lagu ini buat kamu.</p>
       <button class="audioGateBtn" id="audioGateBtn">Tap untuk nyalain musik 💗</button>
     </div>
   </div>
@@ -481,7 +481,7 @@
     (() => {
       const params = new URLSearchParams(location.search);
       const nama = (params.get('nama') || 'Marsya').trim() || 'Marsya';
-      const dari = (params.get('dari') || 'Aku').trim() || 'Aku';
+      const dari = (params.get('dari') || 'fauzi').trim() || 'Aku';
 
       document.getElementById('namaTop').textContent = nama;
       document.getElementById('nama1').textContent = nama;
@@ -733,3 +733,4 @@
   </script>
 </body>
 </html>
+
