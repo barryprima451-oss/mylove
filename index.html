@@ -481,7 +481,7 @@
     (() => {
       const params = new URLSearchParams(location.search);
       const nama = (params.get('nama') || 'Marsya').trim() || 'Marsya';
-      const dari = (params.get('dari') || 'fauzi').trim() || 'Aku';
+      const dari = (params.get('dari') || 'Nama Kamu').trim() || 'Aku';
 
       document.getElementById('namaTop').textContent = nama;
       document.getElementById('nama1').textContent = nama;
@@ -733,4 +733,5 @@
   </script>
 </body>
 </html>
+
 
